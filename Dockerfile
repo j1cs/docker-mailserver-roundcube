@@ -1,4 +1,4 @@
-FROM smaregi/php:7.4.21-fpm-buster
+FROM php:7.4-apache
 LABEL maintainer="Ralph Schuster <github@ralph-schuster.eu>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends \
