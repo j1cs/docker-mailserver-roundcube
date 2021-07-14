@@ -2,7 +2,12 @@ FROM php:7.4-apache
 LABEL maintainer="Ralph Schuster <github@ralph-schuster.eu>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends \
-    wget \
+    wget libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libmagickwand-dev ghostscript libzip-dev libldb-dev libldap2-dev \
+    && pecl install imagick \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-enable imagick \
+    && docker-php-ext-install -j$(nproc) pdo_mysql intl exif ldap gd zip \
+    && apt-get purge -y libicu-dev libzip-dev libmagickwand-dev libldb-dev libldap2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 #ADD etc/php/ /usr/local/etc/php/conf.d/
@@ -49,4 +54,3 @@ LABEL org.opencontainers.image.description=$ARG_DESCRIPTION
 LABEL org.opencontainers.image.documentation=$ARG_DOCUMENTATION
 LABEL org.opencontainers.image.authors=$ARG_AUTHORS
 LABEL org.opencontainers.image.licenses=$ARG_LICENSES
-
