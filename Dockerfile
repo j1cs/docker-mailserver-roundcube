@@ -54,3 +54,4 @@ LABEL org.opencontainers.image.description=$ARG_DESCRIPTION
 LABEL org.opencontainers.image.documentation=$ARG_DOCUMENTATION
 LABEL org.opencontainers.image.authors=$ARG_AUTHORS
 LABEL org.opencontainers.image.licenses=$ARG_LICENSES
+
