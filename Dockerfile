@@ -8,6 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     && docker-php-ext-enable imagick \
     && docker-php-ext-install -j$(nproc) pdo_mysql intl exif ldap gd zip \
     && apt-get purge -y libicu-dev libzip-dev libmagickwand-dev libldb-dev libldap2-dev \
+    && apt-get autoremove -y
     && rm -rf /var/lib/apt/lists/*
 
 #ADD etc/php/ /usr/local/etc/php/conf.d/
