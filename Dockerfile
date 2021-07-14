@@ -2,7 +2,7 @@ FROM php:7.4-apache
 LABEL maintainer="Ralph Schuster <github@ralph-schuster.eu>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends \
-    wget libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libmagickwand-dev ghostscript libzip-dev libldb-dev libldap2-dev \
+    wget libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libmagickwand-dev ghostscript libzip-dev libldb-dev libldap2-dev vim \
     && pecl install imagick \
     && docker-php-ext-configure gd \
     && docker-php-ext-enable imagick \
